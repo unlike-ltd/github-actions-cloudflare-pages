@@ -14,6 +14,8 @@ await esbuild.build({
   legalComments: 'external',
   logLevel: 'info',
   minify: false,
+  minifySyntax: true,
+  minifyWhitespace: true,
   external: ['wrangler'],
   treeShaking: true,
   banner: {
@@ -36,6 +38,7 @@ await esbuild.build({
   define: {
     'process.env.npm_package_dependencies_wrangler': JSON.stringify(
       process.env.npm_package_dependencies_wrangler
-    )
+    ),
+    'process.env.NODE_ENV': JSON.stringify('production')
   }
 })
